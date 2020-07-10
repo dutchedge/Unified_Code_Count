@@ -885,7 +885,12 @@ void	IntToStr( const int val, string & result )
 {
 	char buf[32];
 
+#if _WIN32
 	_itoa_s( val, buf, 10 );
+#else
+	snprintf(buf, 16, "%d", val);
+#endif
+
 	result = buf;
 }
 

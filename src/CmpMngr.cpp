@@ -22,7 +22,9 @@
 */
 
 #include <stdlib.h>		// for calloc/realloc/free
-
+#if ! _WIN32
+	#include <string.h>
+#endif
 #include "CmpMngr.h"
 
 using namespace std;

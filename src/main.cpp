@@ -14,7 +14,12 @@
 
 #include <string>
 #include <time.h>
-#include <conio.h>
+#if _WIN32
+    #include <conio.h>
+#else
+    #include <string.h>
+    #include <stdio.h>
+#endif
 
 #include "DiffTool.h"
 
@@ -54,11 +59,15 @@ time_t	time_end_print_resultsLast = 0;
 #define		STR_BUF_SIZE	256
 void	TimeMsg( char *buf, string & time_str, const char * format, int time )
 {
+#if _WIN32
 	strcpy_s( buf, STR_BUF_SIZE * sizeof(char), "" );
+#else
+	strcpy( buf, "" );
+#endif
 	if ( time >= 0 )
-		sprintf_s( buf, STR_BUF_SIZE * sizeof(char), format, time );
+		snprintf( buf, STR_BUF_SIZE * sizeof(char), format, time );
 	else
-		sprintf_s( buf, STR_BUF_SIZE * sizeof(char), format );
+		snprintf( buf, STR_BUF_SIZE * sizeof(char), format );
 	time_str += buf;
 }
 
@@ -410,8 +419,11 @@ int main(int argc, char *argv[])
 
 	string	time_str;
 	char buf[STR_BUF_SIZE];
+#if _WIN32
 	strcpy_s( buf, STR_BUF_SIZE * sizeof(char), "" );
-
+#else
+	strcpy( buf, "" );
+#endif
 	if ( doDiff )
 	{
 		TimeMsg( buf, time_str, " A Files: %d  ", files_A_count );
@@ -422,9 +434,12 @@ int main(int argc, char *argv[])
 	
 	if ( 1.0 > total_seconds )
 		total_seconds = 1.0;		// AVOID divide by Zero
-
+#if _WIN32
 	strcpy_s( buf, STR_BUF_SIZE * sizeof(char), "" );
-	sprintf_s( buf, STR_BUF_SIZE * sizeof(char), " for %.1f files processed per second\n", 
+#else
+	strcpy( buf, "" );
+#endif
+	snprintf( buf, STR_BUF_SIZE * sizeof(char), " for %.1f files processed per second\n", 
 					( (double)( files_A_count + files_B_count )/total_seconds ) + .05 );
 	time_str += buf;
 

@@ -1091,7 +1091,11 @@ void MainObject::StartThreads( string & start_result_msg )
 		else
 		{
 			// Message that wanted number of threads started OK.
+#if _WIN32
 			_itoa_s( workThreadsCount, buf, 10 );
+#else
+			snprintf(buf, 16, "%d", workThreadsCount);
+#endif
 			msg_result = buf;
 			msg_result += " Threads started.\n";
 		}
