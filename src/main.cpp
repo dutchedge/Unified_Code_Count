@@ -234,8 +234,11 @@ int main(int argc, char *argv[])
 
 	printf( "Here is where you can attach a Debugger." );
 	printf( "\nHit Enter key to continue running in UCC main()\n" );
-
+#if _WIN32
+	char * pChar = gets_s( keyBuffer, 256 );
+#else
 	char * pChar = gets( keyBuffer );
+#endif
 #endif
 
 	// Now that UCC is running without any User input 
@@ -436,11 +439,14 @@ int main(int argc, char *argv[])
 		total_seconds = 1.0;		// AVOID divide by Zero
 #if _WIN32
 	strcpy_s( buf, STR_BUF_SIZE * sizeof(char), "" );
+	sprintf_s( buf, STR_BUF_SIZE * sizeof(char), " for %.1f files processed per second\n", 
+					( (double)( files_A_count + files_B_count )/total_seconds ) + .05 );
 #else
 	strcpy( buf, "" );
-#endif
 	snprintf( buf, STR_BUF_SIZE * sizeof(char), " for %.1f files processed per second\n", 
 					( (double)( files_A_count + files_B_count )/total_seconds ) + .05 );
+#endif
+
 	time_str += buf;
 
 	if ( duplicate_threshold_used >= 0.0 )
@@ -474,8 +480,11 @@ int main(int argc, char *argv[])
 	printf( "\nFinished.  Hit Enter key and this will exit.\n" );
 
 	char keyBuffer2[256];
-
+#if _WIN32
+	pChar = gets_s( keyBuffer2, 256 );
+#else
 	pChar = gets( keyBuffer2 );
+#endif
 #endif
 
 	return retVal;

@@ -130,8 +130,12 @@
     <ClCompile Include="src\CXMidasCounter.cpp" />
     <ClCompile Include="src\CXmlCounter.cpp" />
     <ClCompile Include="src\DiffTool.cpp" />
+    <ClCompile Include="src\LangUtils.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MainObject.cpp" />
+    <ClCompile Include="src\PrintUtil.cpp" />
+    <ClCompile Include="src\UCCGlobals.cpp" />
+    <ClCompile Include="src\UCCThread.cpp" />
     <ClCompile Include="src\UserIF.cpp" />
   </ItemGroup>
   <ItemGroup>
