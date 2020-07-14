@@ -6,6 +6,9 @@ jobs:
       dist: bionic
       compiler:
       - gcc
+    - os: linux
+      dist: bionic
+      compiler:
       - clang
     - os: windows
   allow_failures:
