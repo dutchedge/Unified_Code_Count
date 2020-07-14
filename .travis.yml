@@ -4,13 +4,12 @@ jobs:
   include:
     - os: linux
       dist: bionic
+      compiler:
+      - gcc
+      - clang
     - os: windows
   allow_failures:
     - os: windows
 
-compiler:
-  - gcc
-  - clang
-  
 script:
   - make
