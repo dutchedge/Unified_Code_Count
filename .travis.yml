@@ -3,7 +3,7 @@ language: cpp
 jobs:
   include:
     - os: linux
-      dist: trusty    
+      dist: bionic
     - os: windows
   allow_failures:
     - os: windows
