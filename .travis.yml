@@ -6,12 +6,14 @@ jobs:
       dist: bionic
       compiler:
       - gcc
+      script: bash ./build.sh
     - os: linux
       dist: bionic
       compiler:
       - clang
       script: bash ./build.sh
     - os: windows
+      script: build.bat
   allow_failures:
     - os: windows
 
