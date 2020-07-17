@@ -10,9 +10,8 @@ jobs:
       dist: bionic
       compiler:
       - clang
+      script: bash ./build.sh
     - os: windows
   allow_failures:
     - os: windows
 
-script:
-  - build.sh
