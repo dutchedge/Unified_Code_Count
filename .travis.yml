@@ -13,7 +13,7 @@ jobs:
       - clang
       script: bash ./build.sh
     - os: windows
-      script: build.bat
+      script: ./build.bat
   allow_failures:
     - os: windows
 
