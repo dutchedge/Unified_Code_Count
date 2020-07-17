@@ -15,4 +15,4 @@ jobs:
     - os: windows
 
 script:
-  - make
+  - build.sh
